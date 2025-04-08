@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Daska Real Estate</title>
 
-
   <link rel="stylesheet" href="./css/master.css" />
   <link rel="stylesheet" href="./css/deals.css">
   <link rel="stylesheet" href="./css/contact.css">
@@ -14,11 +13,8 @@
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <link rel="icon" href="./img/favicon.ico" type="image/png">
 
-
-
-  <!--Jquery-->
+  <!-- Jquery -->
   <script src="./js/plugins/jquery-3-6-0.min.js"></script>
-  <!--Jquery-->
 </head>
 
 <body>
@@ -27,11 +23,14 @@
       <div class="logo">
         <img src="./img/header-logo1.png" alt="Your Company Logo" style="height: 100px; width: auto" />
       </div>
+
+      <!-- Mobile responsive menu -->
       <div class="hamburger" onclick="toggleMenu()">
         <div></div>
         <div></div>
         <div></div>
       </div>
+      <div class="exit-button" onclick="toggleMenu()">X</div> <!-- Fixing exit button alignment -->
       <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="#">Top Features</a></li>
@@ -41,9 +40,9 @@
         <li><a href="blog.html">Blog</a></li>
         <li><a href="contact.html">Contact Us</a></li>
       </ul>
-
     </nav>
   </header>
+
   <!-- WhatsApp Floating Chat -->
   <div class="whatsapp-container">
     <div class="chat-options" id="chatOptions">
@@ -52,57 +51,9 @@
     </div>
     <div class="whatsapp-toggle" onclick="toggleChatOptions()">
       <img src="https://img.icons8.com/color/48/000000/whatsapp--v1.png" />
-
     </div>
   </div>
 
-  <style>
-    .whatsapp-container {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 9999;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-
-    .chat-options {
-      display: none;
-      flex-direction: column;
-      margin-bottom: 10px;
-      gap: 8px;
-    }
-
-    .chat-btn {
-      background-color: #25D366;
-      color: white;
-      padding: 10px 14px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 500;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      transition: background 0.3s ease;
-    }
-
-    .chat-btn:hover {
-      background-color: #128C7E;
-    }
-
-    .whatsapp-toggle img {
-      width: 60px;
-      height: 60px;
-      cursor: pointer;
-    }
-  </style>
-
-  <script>
-    function toggleChatOptions() {
-      const options = document.getElementById('chatOptions');
-      options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
-    }
-  </script>
-  <!-- WhatsApp Floating Chat -->
   <main>
     <!-- Video Background Section -->
     <div class="video-bg">
@@ -111,14 +62,13 @@
         Your browser does not support the video tag.
       </video>
       
-        <div class="overlay-content">
-          <h1>Welcome to Daska Enclave</h1>
-          <p>Premium Real Estate Services</p>
-        </div>
-      
+      <div class="overlay-content">
+        <h1>Welcome to Daska Enclave</h1>
+        <p>Premium Real Estate Services</p>
+      </div>
     </div>
 
-    <!-- Our Services Section -->
+    <!-- Services Section -->
     <section class="section" id="services">
       <h2>Our Services</h2>
       <div class="services-gallery">
@@ -136,7 +86,6 @@
         </div>
       </div>
       <div style="text-align: center; margin-top: 20px;">
-        <a href="services.html" class="deal-button">View Services</a>
       </div>
     </section>
 
@@ -177,56 +126,46 @@
       </div>
     </section>
 
-    <!-- Our Projects Section -->
-    <section id="projects" class="section">
-      <h2>Our Projects</h2>
-      <div class="projects-grid">
-        <div class="project-card">Gulberg Greens</div>
-        <div class="project-card">Blue World City</div>
-        <div class="project-card">Park View City</div>
-        <div class="project-card">Capital Smart City</div>
-        <div class="project-card">Capital Smart City</div>
-      </div>
-    </section>
-
-    <!-- Blog Section -->
+    <!--Blogs-->
     <section id="blog" class="section">
       <h2>Latest Blog Posts</h2>
       <div class="blog-grid">
         <article class="blog-post">
-          <img src="./img/about-page-img-2.jpg" alt="Blog Image 1" class="blog-image">
+          <img src="./img/about-page-img-2.jpg" alt="Blog Image 1" class="blog-image" />
           <h3>Why Invest in Islamabad?</h3>
           <p>Islamabad offers some of the most secure and well-developed property opportunities in Pakistan...</p>
           <a href="blog.html" style="background-color: rgb(255, 255, 255); padding: 1px 4px;">Read More</a>
         </article>
+
         <article class="blog-post">
-          <img src="./img/about-page-img-2.jpg" alt="Blog Image 1" class="blog-image">
-          <h3>Why Invest in Islamabad?</h3>
-          <p>Islamabad offers some of the most secure and well-developed property opportunities in Pakistan...</p>
+          <img src="./img/about-img.png" alt="Blog Image 2" class="blog-image" />
+          <h3>Top 5 Projects to Watch in 2025</h3>
+          <p>Explore the upcoming and trending projects that are reshaping the real estate landscape...</p>
           <a href="blog.html" style="background-color: rgb(255, 255, 255); padding: 1px 4px;">Read More</a>
         </article>
+
         <article class="blog-post">
-          <img src="./img/about-page-img-2.jpg" alt="Blog Image 1" class="blog-image">
-          <h3>Why Invest in Islamabad?</h3>
-          <p>Islamabad offers some of the most secure and well-developed property opportunities in Pakistan...</p>
+          <img src="./img/about-img.png" alt="Blog Image 3" class="blog-image" />
+          <h3>Top 5 Projects to Watch in 2025</h3>
+          <p>Explore the upcoming and trending projects that are reshaping the real estate landscape...</p>
           <a href="blog.html" style="background-color: rgb(255, 255, 255); padding: 1px 4px;">Read More</a>
         </article>
+
         <article class="blog-post">
-          <img src="./img/about-page-img-2.jpg" alt="Blog Image 1" class="blog-image">
-          <h3>Why Invest in Islamabad?</h3>
-          <p>Islamabad offers some of the most secure and well-developed property opportunities in Pakistan...</p>
+          <img src="./img/about-img.png" alt="Blog Image 4" class="blog-image" />
+          <h3>Top 5 Projects to Watch in 2025</h3>
+          <p>Explore the upcoming and trending projects that are reshaping the real estate landscape...</p>
           <a href="blog.html" style="background-color: rgb(255, 255, 255); padding: 1px 4px;">Read More</a>
         </article>
-        <!-- Repeat Blog Articles Here -->
       </div>
-      <a href="blog.html" class="read-more">Read More</a>
     </section>
 
-    <!-- Testimonials Section -->
-    <h2 style="text-align: center; font-size: 2rem; margin-top: 40px; font-weight: 700;">
-      Testimonials
-    </h2>
-    <section class="slider-section">
+
+    <!--blogs end-->
+
+    <!--testimonial section-->
+    <section class="slider-section" style="padding: 20px;">
+      <h2 style="text-align: center; font-size: 2rem; margin-top: 40px; font-weight: 700;">Testimonials</h2>
       <div class="testimonial-box">
         <div class="testimonial" id="testimonial">
           <img src="./img/about-img.png" alt="Client Photo" />
@@ -238,25 +177,16 @@
           <button onclick="nextTestimonial()">Next &#8594;</button>
         </div>
       </div>
-    
-      <div class="image-box">
-        <img src="./img/about-page-img-1.jpg" alt="Illustration" />
-      </div>
     </section>
-    
-
-    <!--testimonial section ends-->
 
     <!-- Contact Section -->
     <section id="contact" class="section contact-section" style="background-color: #efe3c2">
       <h2>Contact Us</h2>
       <div class="contact-container">
-        <!-- Left image area -->
         <div class="contact-image">
           <img src="./img/about-page-img-2.jpg" alt="Contact Us" />
         </div>
 
-        <!-- Right form area -->
         <form class="contact-form">
           <input type="text" placeholder="Full Name" required />
           <input type="email" placeholder="Email Address" required />
@@ -270,13 +200,10 @@
     <!-- Footer Section -->
     <footer class="footer">
       <div class="footer-container">
-        <!-- Company Info -->
         <div class="footer-box">
           <h4>DASKA ENCLAVE</h4>
           <p>Premium Real Estate Services in DASKA.</p>
         </div>
-
-        <!-- Quick Links -->
         <div class="footer-box">
           <h4>Quick Links</h4>
           <ul>
@@ -285,33 +212,34 @@
             <li><a href="#">Contact</a></li>
           </ul>
         </div>
-
-        <!-- Contact Info -->
         <div class="footer-box">
           <h4>Contact Info</h4>
           <p>Email: info@daskaenclave.com</p>
           <p>Phone: +92 300 1234567</p>
           <p>Address: Main Road, Daska Enclave</p>
         </div>
-
-        <!-- Google Map -->
         <div class="footer-box" style="max-width: 300px;">
           <h4>Our Location</h4>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3371.061285144114!2d74.3298318111515!3d32.3370642737416!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391edb00618883d5%3A0xb7115c6e9e32ac98!2sDaska%20Canal%20Enclave!5e0!3m2!1sen!2s!4v1744105688504!5m2!1sen!2s"
-            width="100%" height="150" style="border:0; border-radius: 8px;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
+            src="https://www.google.com/maps/embed?pb=..."></iframe>
         </div>
-      </div> <!-- Closing .footer-container -->
+      </div>
 
       <p class="footer-bottom">
         &copy; 2025 DASKA Real Estate. All rights reserved.
       </p>
     </footer>
-
-
   </main>
+
+  <!--JS for mobile toggle-->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.querySelector('.nav-links');
+      navLinks.classList.toggle('active');
+      const exitButton = document.querySelector('.exit-button');
+      exitButton.classList.toggle('active');
+    }
+  </script>
 
   <script src="./js/script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
