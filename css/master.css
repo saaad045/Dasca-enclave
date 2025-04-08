@@ -5,6 +5,7 @@
     box-sizing: border-box;
     font-family: 'Segoe UI', sans-serif;
 }
+
 body {
     background: #f7f7f7;
     color: #333;
@@ -55,78 +56,93 @@ nav {
 }
 
 /* Mobile View Navbar */
+/* Show hamburger only on mobile */
 .hamburger {
-    display: none;
+    display: none; /* Initially hidden on all screens */
     cursor: pointer;
-    flex-direction: column;
-    gap: 5px;
+    z-index: 9999;
 }
 
 .hamburger div {
-    width: 30px;
-    height: 4px;
+    width: 25px;
+    height: 3px;
     background-color: #fff;
-    border-radius: 5px;
+    margin: 5px 0;
+    transition: 0.4s;
 }
 
-.nav-links {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-}
-
-/* Show the hamburger icon only on mobile */
-@media (max-width: 768px) {
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
     .hamburger {
-        display: flex;
+        display: block; /* Show hamburger menu only on mobile */
     }
 
     .nav-links {
-        display: none;
+        display: none; /* Hide navigation links on mobile */
+        flex-direction: column;
+        list-style: none;
+        padding: 0;
         position: absolute;
-        top: 60px;
+        top: 80px;
+        left: 0;
         right: 0;
-        background-color: #032501;
-        flex-direction: column;
-        width: 100%;
+        background-color: #123524;
+        z-index: 9999;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-links.active {
+        display: flex; /* Show navigation links when hamburger menu is active */
+    }
+
+    /* Hide regular navigation links on mobile */
+    .nav-links li {
+        display: block;
+        text-align: center;
         padding: 10px;
-        gap: 10px;
     }
 
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links a {
+    .exit-button {
+        display: none; /* Initially hidden */
+        font-size: 30px;
+        cursor: pointer;
+        position: absolute;
+        top: 20px;
+        right: 20px;
         color: #fff;
-        text-decoration: none;
     }
 
-    .nav-links a:hover {
-        color: #ffb400;
+    .exit-button.active {
+        display: block; /* Show exit button when hamburger menu is active */
+    }
+}
+
+/* For desktop (larger than 768px), hide the hamburger and show regular nav links */
+@media screen and (min-width: 769px) {
+    .hamburger {
+        display: none; /* Hide hamburger on desktop */
     }
 
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
+    .nav-links {
+        display: flex; /* Show nav links in regular layout */
+        flex-direction: row;
+        justify-content: flex-start;
     }
 
-    .logo {
-        margin-bottom: 20px;
+    .exit-button {
+        display: none; /* Hide exit button on desktop */
     }
 }
 
 /* Background Video */
-/* Ensure the video background is full screen */
 .video-bg {
     position: relative;
     width: 100%;
     height: 100vh;
     overflow: hidden;
-  }
-  
-  /* Full-screen video styling */
-  .video-bg video {
+}
+
+.video-bg video {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -134,13 +150,13 @@ nav {
     top: 0;
     left: 0;
     z-index: -1;
-  }
-  
-  /* Initial style for the overlay-content */
-  .overlay-content {
+}
+
+/* Overlay Content */
+.overlay-content {
     position: absolute;
     top: 50%;
-    left: -50%;  /* Start from the left, out of the viewport */
+    left: -50%;
     transform: translateY(-50%);
     opacity: 0;
     visibility: hidden;
@@ -150,42 +166,37 @@ nav {
     text-align: center;
     padding: 20px;
     width: 100%;
-  }
-  
-  /* Keyframes for the sliding animation */
-  @keyframes slideIn {
+}
+
+@keyframes slideIn {
     0% {
-      left: -50%;
-      opacity: 0;
+        left: -50%;
+        opacity: 0;
     }
     100% {
-      left: 50%;
-      transform: translate(-50%, -50%);
-      opacity: 1;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 1;
     }
-  }
-  
-  /* When the page loads or div comes into view, apply the animation */
-  .overlay-content.visible {
+}
+
+.overlay-content.visible {
     animation: slideIn 1s ease-out forwards;
     visibility: visible;
     opacity: 1;
-  }
-  
-
-
+}
 
 /* Sections */
 .section {
     padding: 60px 5% 40px;
     background: #fff;
     margin-bottom: 20px;
+    text-align: center;
 }
 
 .section h2 {
     font-size: 32px;
     margin-bottom: 30px;
-    text-align: center;
     color: #000000;
 }
 
@@ -280,63 +291,58 @@ nav {
     margin-top: 20px;
 }
 
-/* Center the link inside its container */
-.section {
-    text-align: center;
-}
-
 /* Testimonials */
 .slider-section {
     display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 60px 40px;
-  gap: 50px;
-  flex-wrap: wrap;
-  max-width: 1200px;
-  margin: 0 auto;
-  }
+    justify-content: center;
+    align-items: center;
+    padding: 60px 40px;
+    gap: 50px;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 0 auto;
+}
 
-  .testimonial-box {
+.testimonial-box {
     flex: 1;
     max-width: 500px;
     min-width: 280px;
     position: relative;
-  }
+}
 
-  .testimonial {
+.testimonial {
     background: #efe3c2;
     border-radius: 12px;
     padding: 70px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
-  }
+}
 
-  .testimonial img {
+.testimonial img {
     width: 60px;
     height: 60px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
-  }
+}
 
-  .testimonial p {
+.testimonial p {
     font-size: 1rem;
     margin-bottom: 10px;
-  }
+}
 
-  .testimonial h4 {
+.testimonial h4 {
     margin: 0;
     font-weight: bold;
-  }
+}
 
-  .buttons {
+.buttons {
     display: flex;
     justify-content: space-between;
     margin-top: 15px;
-  }
+}
 
-  .buttons button {
+.buttons button {
     background-color: #4b3030;
     color: #fff;
     border: none;
@@ -344,37 +350,21 @@ nav {
     cursor: pointer;
     border-radius: 6px;
     transition: background 0.2s;
-  }
+}
 
-  .buttons button:hover {
+.buttons button:hover {
     background-color: #555;
-  }
+}
 
-  .image-box {
+.image-box {
     flex: 1;
     text-align: center;
-  }
+}
 
-  .image-box img {
+.image-box img {
     max-width: 100%;
     width: 300px;
-  }
-
-  @media (max-width: 768px) {
-    .slider-section {
-      flex-direction: column;
-      text-align: center;
-    }
-
-    .testimonial-box, .image-box {
-      width: 100%;
-    }
-
-    .buttons {
-      justify-content: center;
-      gap: 10px;
-    }
-  }
+}
 
 /* Contact Form Section */
 .contact-section .contact-container {
@@ -433,157 +423,115 @@ nav {
     background-color: #123524;
     color: #fff;
     padding: 30px 20px;
-  }
-  
-  .footer-container {
+}
+
+.footer-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     gap: 20px;
-  }
-  
-  .footer-box {
+}
+
+.footer-box {
     flex: 1 1 200px;
     min-width: 200px;
     max-width: 300px;
-  }
-  
-  .footer-box ul {
+}
+
+.footer-box ul {
     list-style: none;
     padding: 0;
-  }
-  
-  .footer-box ul li {
+}
+
+.footer-box ul li {
     margin-bottom: 6px;
-  }
-  
-  .footer-box a {
+}
+
+.footer-box a {
     text-decoration: none;
     color: #ffffff;
-  }
-  
-  .footer-bottom {
+}
+
+.footer-bottom {
     text-align: center;
     margin-top: 30px;
     font-size: 14px;
     color: #ffffff;
-  }
+}
 
-/* Ceo - Message */
+/* CEO Message */
 #ceo-message {
     padding: 40px;
     background-color: #f4f4f4;
-  }
-  
-  .ceo-container {
+}
+
+.ceo-container {
     display: flex;
     justify-content: space-between;
-    gap: 30px; /* Space between image and message */
+    gap: 30px;
     align-items: center;
-    flex-wrap: wrap; /* For responsiveness */
-  }
-  
-  .ceo-left,
-  .ceo-right {
-    flex: 1; /* Each section will take equal width */
+    flex-wrap: wrap;
+}
+
+.ceo-left,
+.ceo-right {
+    flex: 1;
     padding: 20px;
     box-sizing: border-box;
-  }
-  
-  .ceo-left img {
+}
+
+.ceo-left img {
     width: 100%;
     height: auto;
     border-radius: 8px;
-  }
-  
-  .ceo-right h2 {
+}
+
+.ceo-right h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     color: #333;
-  }
-  
-  .ceo-right p {
+}
+
+.ceo-right p {
     font-size: 1.1rem;
     line-height: 1.6;
     color: #555;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .ceo-container {
-      flex-direction: column; /* Stack the sections on small screens */
-      align-items: center;
-    }
-  
-    .ceo-left,
-    .ceo-right {
-      flex: none;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-  
-    .ceo-left img {
-      width: 80%;
-      margin: 0 auto;
-    }
-  }
-  
-/* Ceo - Message */
-  
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    /* Navbar */
-    .hamburger {
-        display: flex;
+    .ceo-container {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .nav-links {
-        display: none;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: #032501;
-        flex-direction: column;
+    .ceo-left,
+    .ceo-right {
+        flex: none;
         width: 100%;
-        padding: 10px;
-        gap: 10px;
-    }
-
-    .nav-links.show {
-        display: flex;
-    }
-
-    .nav-links a {
-        color: #fff;
-        text-decoration: none;
-    }
-
-    .nav-links a:hover {
-        color: #ffb400;
-    }
-
-    nav {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .logo {
         margin-bottom: 20px;
     }
 
-    /* Grid layout adjustments */
-    .services-gallery,
-    .deals-gallery,
-    .projects-grid,
-    .blog-grid {
-        grid-template-columns: 1fr;
+    .ceo-left img {
+        width: 80%;
+        margin: 0 auto;
     }
 
-    .testimonial-container {
-        grid-template-columns: repeat(2, 1fr);
+    .slider-section {
+        flex-direction: column;
+        text-align: center;
     }
 
-    /* Contact form layout */
+    .testimonial-box,
+    .image-box {
+        width: 100%;
+    }
+
+    .buttons {
+        justify-content: center;
+        gap: 10px;
+    }
+
     .contact-section .contact-container {
         flex-direction: column;
     }
@@ -593,12 +541,6 @@ nav {
         max-width: 100%;
     }
 
-    /* Footer grid */
-    .footer-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    /* Adjust font sizes */
     .section h2 {
         font-size: 24px;
     }
@@ -610,4 +552,43 @@ nav {
     .testimonial h4 {
         font-size: 12px;
     }
+
+    .services-gallery,
+    .deals-gallery,
+    .projects-grid,
+    .blog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* WhatsApp Button */
+.whatsapp-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.chat-options {
+    display: none;
+    flex-direction: column;
+    margin-bottom: 10px;
+    gap: 8px;
+}
+
+.chat-btn {
+    background-color: #25d366;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+}
+
+.whatsapp-container:hover .chat-options {
+    display: flex;
 }
