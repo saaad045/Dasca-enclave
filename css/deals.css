@@ -1,0 +1,44 @@
+.deal-row {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin: 50px 0;
+            flex-wrap: wrap;
+          }
+      
+          .deal-row img {
+            width: 50%;
+            border-radius: 10px;
+          }
+      
+          .deal-text {
+            max-width: 50%;
+          }
+      
+          .deal-row.reverse {
+            flex-direction: row-reverse;
+          }
+      
+          .deal-text h4 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+          }
+      
+          .deal-text p {
+            font-size: 1rem;
+            color: #444;
+          }
+      
+          @media (max-width: 768px) {
+            .deal-row,
+            .deal-row.reverse {
+              flex-direction: column;
+            }
+      
+            .deal-row img,
+            .deal-text {
+              max-width: 100%;
+              width: 100%;
+              text-align: center;
+            }
+          }
