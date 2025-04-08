@@ -58,7 +58,8 @@ nav {
 /* Mobile View Navbar */
 /* Show hamburger only on mobile */
 .hamburger {
-    display: none; /* Initially hidden on all screens */
+    display: none;
+    /* Initially hidden on all screens */
     cursor: pointer;
     z-index: 9999;
 }
@@ -74,11 +75,13 @@ nav {
 /* Media query for mobile devices */
 @media screen and (max-width: 768px) {
     .hamburger {
-        display: block; /* Show hamburger menu only on mobile */
+        display: block;
+        /* Show hamburger menu only on mobile */
     }
 
     .nav-links {
-        display: none; /* Hide navigation links on mobile */
+        display: none;
+        /* Hide navigation links on mobile */
         flex-direction: column;
         list-style: none;
         padding: 0;
@@ -92,7 +95,8 @@ nav {
     }
 
     .nav-links.active {
-        display: flex; /* Show navigation links when hamburger menu is active */
+        display: flex;
+        /* Show navigation links when hamburger menu is active */
     }
 
     /* Hide regular navigation links on mobile */
@@ -103,7 +107,8 @@ nav {
     }
 
     .exit-button {
-        display: none; /* Initially hidden */
+        display: none;
+        /* Initially hidden */
         font-size: 30px;
         cursor: pointer;
         position: absolute;
@@ -113,24 +118,28 @@ nav {
     }
 
     .exit-button.active {
-        display: block; /* Show exit button when hamburger menu is active */
+        display: block;
+        /* Show exit button when hamburger menu is active */
     }
 }
 
 /* For desktop (larger than 768px), hide the hamburger and show regular nav links */
 @media screen and (min-width: 769px) {
     .hamburger {
-        display: none; /* Hide hamburger on desktop */
+        display: none;
+        /* Hide hamburger on desktop */
     }
 
     .nav-links {
-        display: flex; /* Show nav links in regular layout */
+        display: flex;
+        /* Show nav links in regular layout */
         flex-direction: row;
         justify-content: flex-start;
     }
 
     .exit-button {
-        display: none; /* Hide exit button on desktop */
+        display: none;
+        /* Hide exit button on desktop */
     }
 }
 
@@ -173,6 +182,7 @@ nav {
         left: -50%;
         opacity: 0;
     }
+
     100% {
         left: 50%;
         transform: translate(-50%, -50%);
@@ -292,30 +302,40 @@ nav {
 }
 
 /* Testimonials */
+/* Testimonials */
 .slider-section {
     display: flex;
-    justify-content: center;
+    flex-wrap: wrap;
     align-items: center;
+    justify-content: center;
     padding: 60px 40px;
     gap: 50px;
-    flex-wrap: wrap;
     max-width: 1200px;
     margin: 0 auto;
+    position: relative;
+}
+
+.testimonial-heading {
+    flex-basis: 100%;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #123524;
+    font-weight: bold;
 }
 
 .testimonial-box {
     flex: 1;
     max-width: 500px;
     min-width: 280px;
-    position: relative;
 }
 
 .testimonial {
     background: #efe3c2;
     border-radius: 12px;
-    padding: 70px;
+    padding: 60px 40px;
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    text-align: center;
 }
 
 .testimonial img {
@@ -338,7 +358,8 @@ nav {
 
 .buttons {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    gap: 10px;
     margin-top: 15px;
 }
 
@@ -356,15 +377,43 @@ nav {
     background-color: #555;
 }
 
-.image-box {
+/* Testimonial Image */
+.testimonial-image {
     flex: 1;
-    text-align: center;
+    max-width: 500px;
+    min-width: 280px;
 }
 
-.image-box img {
-    max-width: 100%;
-    width: 300px;
+.testimonial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .slider-section {
+        flex-direction: column;
+        padding: 40px 20px;
+    }
+
+    .testimonial-heading {
+        font-size: 28px;
+        margin-bottom: 20px;
+    }
+
+    .testimonial-box,
+    .testimonial-image {
+        width: 100%;
+    }
+
+    .testimonial {
+        padding: 40px 20px;
+    }
+}
+
 
 /* Contact Form Section */
 .contact-section .contact-container {
