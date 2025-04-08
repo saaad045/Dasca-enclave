@@ -1,4 +1,3 @@
-
 // Get the overlay content element
 const overlayContent = document.querySelector('.overlay-content');
 
@@ -12,10 +11,8 @@ const observerOptions = {
 const observerCallback = (entries, observer) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
-      // If the element is in view, add the 'visible' class to start the animation
       entry.target.classList.add('visible');
     } else {
-      // If the element is out of view, remove the 'visible' class to reset the animation
       entry.target.classList.remove('visible');
     }
   });
@@ -24,35 +21,33 @@ const observerCallback = (entries, observer) => {
 // Create a new IntersectionObserver instance
 const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-// Start observing the overlay-content element
-observer.observe(overlayContent);
+// Start observing the overlay-content element (if it exists)
+if (overlayContent) {
+  observer.observe(overlayContent);
 
-// Trigger the animation immediately when the page loads (in case it's already in view)
-window.addEventListener('load', () => {
-  overlayContent.classList.add('visible');
-});
+  // Trigger animation on page load
+  window.addEventListener('load', () => {
+    overlayContent.classList.add('visible');
+  });
 
-// Also trigger the animation on page resize to ensure it works even on dynamic changes
-window.addEventListener('resize', () => {
-  overlayContent.classList.remove('visible');  // Remove the class
-  overlayContent.offsetWidth;  // Trigger a reflow to restart the animation
-  overlayContent.classList.add('visible');  // Reapply the class to start the animation
-});
-
-
-
+  // Re-trigger animation on window resize
+  window.addEventListener('resize', () => {
+    overlayContent.classList.remove('visible');
+    overlayContent.offsetWidth; // Reflow
+    overlayContent.classList.add('visible');
+  });
+}
 
 // Toggle mobile menu visibility (hamburger menu)
 function toggleMenu() {
   const navLinks = document.querySelector('.nav-links');
-  navLinks.classList.toggle('show');
+  const exitButton = document.querySelector('.exit-button');
+
+  if (navLinks) navLinks.classList.toggle('active');
+  if (exitButton) exitButton.classList.toggle('active');
 }
 
-// If you have a hamburger icon, you can call toggleMenu() on click, like so:
-const hamburger = document.querySelector('.hamburger');
-hamburger.addEventListener('click', toggleMenu);
-
-
+// Testimonials data
 const testimonials = [
   {
     img: "https://randomuser.me/api/portraits/women/44.jpg",
@@ -68,19 +63,25 @@ const testimonials = [
     img: "https://randomuser.me/api/portraits/women/68.jpg",
     text: "Highly recommend FTN for real estate advice. Trustworthy!",
     name: "- Sana Khan"
+  },
+  {
+    img: "https://randomuser.me/api/portraits/women/68.jpg",
+    text: "Highly recommend FTN for real estate advice. Trustworthy!",
+    name: "- Ali Khan"
   }
 ];
 
-//-----------------testimonialssss------------------------//
 let current = 0;
 
 function updateTestimonial() {
   const testimonialEl = document.getElementById("testimonial");
-  testimonialEl.innerHTML = `
-    <img src="${testimonials[current].img}" alt="Client Photo" />
-    <p>"${testimonials[current].text}"</p>
-    <h4>${testimonials[current].name}</h4>
-  `;
+  if (testimonialEl) {
+    testimonialEl.innerHTML = `
+      <img src="${testimonials[current].img}" alt="Client Photo" />
+      <p>"${testimonials[current].text}"</p>
+      <h4>${testimonials[current].name}</h4>
+    `;
+  }
 }
 
 function nextTestimonial() {
@@ -93,4 +94,10 @@ function prevTestimonial() {
   updateTestimonial();
 }
 
-//-------------------testimonialss--------------------------//
+// WhatsApp floating button toggle
+function toggleChatOptions() {
+  const options = document.getElementById('chatOptions');
+  if (options) {
+    options.style.display = options.style.display === 'flex' ? 'none' : 'flex';
+  }
+}
